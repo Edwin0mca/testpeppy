@@ -17,46 +17,31 @@ const advisoryBoard = [
 ];
 
 const cardVariants = {
-  hidden: {
-    opacity: 0,
-    y: 30,
-  },
+  hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
       duration: 0.6,
-      ease: [0.16, 1, 0.3, 1], // ✅ FIXED
+      ease: [0.16, 1, 0.3, 1],
     },
   },
 };
 
-const Leadership = () => {
+export default function Leadership() {
   return (
-    <section className="relative overflow-hidden py-32 px-6 bg-gradient-to-b from-[#6816EF]/6 via-white to-[#6816EF]/10">
+    <section className="relative overflow-hidden py-32 px-6 bg-gradient-to-r from-[#6816EF] to-[#4a0fb3] text-white">
 
-      {/* FLOATING BRAND LIGHTS */}
-      <motion.div
-        animate={{ y: [0, 40, 0], x: [0, 30, 0] }}
-        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-20 left-20 w-96 h-96 bg-[#6816EF]/15 rounded-full blur-3xl"
-      />
-      <motion.div
-        animate={{ y: [0, -40, 0], x: [0, -30, 0] }}
-        transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-20 right-20 w-[28rem] h-[28rem] bg-[#6816EF]/10 rounded-full blur-3xl"
-      />
-
-      <div className="relative max-w-6xl mx-auto space-y-32">
+      <div className="relative max-w-6xl mx-auto space-y-28">
 
         {/* BOARD */}
         <div>
           <motion.h2
             initial={{ opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-3xl font-bold text-center text-[#6816EF] mb-16"
+            className="text-3xl font-bold text-center mb-16"
           >
             Board of Directors
           </motion.h2>
@@ -71,21 +56,15 @@ const Leadership = () => {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.08 }}
                 whileHover={{ y: -8 }}
-                className="group relative bg-white/85 backdrop-blur
-                           rounded-2xl p-7 shadow-md
-                           border border-[#6816EF]/15
-                           overflow-hidden transition"
+                className="bg-white/10 backdrop-blur
+                rounded-2xl p-7 border border-white/20
+                hover:bg-white/20 transition"
               >
-                <div className="absolute top-0 left-0 h-1 w-full bg-gradient-to-r from-[#6816EF] via-[#9b6cff] to-[#6816EF]" />
-
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500">
-                  <div className="absolute -top-16 -right-16 w-48 h-48 bg-[#6816EF]/20 rounded-full blur-3xl" />
-                </div>
-
-                <h3 className="relative z-10 text-lg font-semibold text-gray-900 mb-1">
+                <h3 className="text-lg font-semibold mb-1">
                   {member.name}
                 </h3>
-                <p className="relative z-10 text-sm text-gray-600 leading-relaxed">
+
+                <p className="text-sm text-white/80">
                   {member.role}
                 </p>
               </motion.div>
@@ -98,9 +77,9 @@ const Leadership = () => {
           <motion.h2
             initial={{ opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-3xl font-bold text-center text-[#6816EF] mb-16"
+            className="text-3xl font-bold text-center mb-16"
           >
             Advisory Board
           </motion.h2>
@@ -115,21 +94,15 @@ const Leadership = () => {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.08 }}
                 whileHover={{ y: -8 }}
-                className="group relative bg-white/85 backdrop-blur
-                           rounded-2xl p-7 shadow-md
-                           border border-[#6816EF]/15
-                           overflow-hidden transition"
+                className="bg-white/10 backdrop-blur
+                rounded-2xl p-7 border border-white/20
+                hover:bg-white/20 transition"
               >
-                <div className="absolute top-0 left-0 h-1 w-full bg-gradient-to-r from-[#6816EF] via-[#9b6cff] to-[#6816EF]" />
-
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500">
-                  <div className="absolute -top-16 -right-16 w-48 h-48 bg-[#6816EF]/20 rounded-full blur-3xl" />
-                </div>
-
-                <h3 className="relative z-10 text-lg font-semibold text-gray-900 mb-1">
+                <h3 className="text-lg font-semibold mb-1">
                   {member.name}
                 </h3>
-                <p className="relative z-10 text-sm text-gray-600 leading-relaxed">
+
+                <p className="text-sm text-white/80">
                   {member.role}
                 </p>
               </motion.div>
@@ -140,6 +113,4 @@ const Leadership = () => {
       </div>
     </section>
   );
-};
-
-export default Leadership;
+}

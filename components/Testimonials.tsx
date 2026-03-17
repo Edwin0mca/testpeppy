@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { ChevronLeft, ChevronRight, Quote, Star } from "lucide-react";
 
 type Testimonial = {
   message: string;
@@ -12,132 +12,140 @@ type Testimonial = {
 const userTestimonials: Testimonial[] = [
   {
     message:
-      "I have started saving gold with Peppy Gold. It’s a really good app, and I recommend it to everyone.",
-    name: "Sneha Shree",
+      "Best and most trusted app for investing in gold. A safe and reliable platform for all gold savings.",
+    name: "Jaya Sri",
+  },
+  {
+    message:
+      "This app really good and easy to use... lots of offers and rewards in it.",
+    name: "Emmaniel Emmon",
   },
   {
     message:
       "Best and most trusted app for investing in gold. A safe and reliable platform for all gold savings.",
     name: "Jaya Sri",
   },
-  {
-    message:
-      "Good application for investing in jewellery. Provides detailed comparison and easier subscription to saving schemes.",
-    name: "Tamilselvan M",
-  },
-  {
-    message:
-      "Very user-friendly app! Makes gold investment simple, secure, and convenient.",
-    name: "Mani Kandan",
-  },
 ];
 
 const partnerTestimonials: Testimonial[] = [
   {
     message:
-      "An excellent platform for jewellers to trade profitably without investing a single penny. Truly a game-changer.",
+      "An absolutely fantastic platform, perfectly suited for the new generation of jewellers and investors!",
+    name: "Garudaa Gold Palace Pvt Ltd",
+  },
+  {
+    message:
+      "An excellent platform for jewellers to trade profitably without investing a single penny.",
     name: "AGS Thangamaaligai",
   },
   {
     message:
-      "A great opportunity for jewellers to amplify revenue and reach more customers.",
-    name: "Kamalam Jewellery",
-  },
-  {
-    message:
-      "Perfectly suited for the new generation of jewellers and investors.",
-    name: "Garudaa Gold Palace Pvt Ltd",
+      "Best and most trusted platform for gold investments and jewellery schemes.",
+    name: "Jaya Sri",
   },
 ];
 
-const Slider = ({ data }: { data: Testimonial[] }) => {
+function Carousel({ data }: { data: Testimonial[] }) {
   const [index, setIndex] = useState(0);
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setIndex((prev) => (prev + 1) % data.length);
-    }, 6500); // slower & calmer
-    return () => clearInterval(timer);
-  }, [data.length]);
+  const prev = () => {
+    setIndex((prev) => (prev - 1 + data.length) % data.length);
+  };
 
-  const prev = () => setIndex((index - 1 + data.length) % data.length);
-  const next = () => setIndex((index + 1) % data.length);
+  const next = () => {
+    setIndex((prev) => (prev + 1) % data.length);
+  };
 
   return (
-    <div className="relative max-w-3xl mx-auto">
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={index}
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -18 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="bg-white/80 backdrop-blur border border-[#6816EF]/10 rounded-2xl p-8 text-center shadow-md"
-        >
-          <Quote className="mx-auto text-[#6816EF] mb-4" />
-          <p className="text-gray-700 leading-relaxed mb-6">
-            “{data[index].message}”
-          </p>
-          <h4 className="font-semibold text-gray-900">
-            {data[index].name}
-          </h4>
-        </motion.div>
-      </AnimatePresence>
+    <div className="relative">
 
-      {/* Controls */}
+      {/* CARDS */}
+      <div className="grid md:grid-cols-3 gap-6">
+        {data.map((item, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            className="bg-white p-6 rounded-xl shadow-md"
+          >
+            <Quote className="text-gray-400 mb-3" />
+
+            {/* Stars */}
+            <div className="flex gap-1 mb-3 text-yellow-400">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} size={16} fill="currentColor" />
+              ))}
+            </div>
+
+            <p className="text-gray-600 text-sm mb-5">
+              "{item.message}"
+            </p>
+
+            <h4 className="font-semibold text-gray-800">
+              {item.name}
+            </h4>
+          </motion.div>
+        ))}
+      </div>
+
+      {/* NAVIGATION */}
       <button
         onClick={prev}
-        className="absolute -left-6 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow hover:scale-105 transition"
+        className="absolute right-12 -top-12 bg-white border p-2 rounded-full shadow"
       >
-        <ChevronLeft />
+        <ChevronLeft size={18} />
       </button>
 
       <button
         onClick={next}
-        className="absolute -right-6 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow hover:scale-105 transition"
+        className="absolute right-0 -top-12 bg-white border p-2 rounded-full shadow"
       >
-        <ChevronRight />
+        <ChevronRight size={18} />
       </button>
+
+      {/* DOTS */}
+      <div className="flex justify-center mt-6 gap-2">
+        {data.map((_, i) => (
+          <div
+            key={i}
+            className={`w-2 h-2 rounded-full ${
+              i === index ? "bg-purple-600" : "bg-gray-300"
+            }`}
+          />
+        ))}
+      </div>
+
     </div>
   );
-};
+}
 
-const Testimonials = () => {
+export default function Testimonials() {
   return (
-    <section className="relative py-28 px-6 bg-gradient-to-b from-[#6816EF]/5 via-white to-[#6816EF]/5">
-      <div className="max-w-6xl mx-auto space-y-28">
+    <section className="py-24 px-6 bg-gray-100">
+
+      <div className="max-w-6xl mx-auto space-y-24">
 
         {/* USERS */}
         <div>
-          <motion.h2
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-3xl font-bold text-center text-[#6816EF] mb-14"
-          >
-            Loved by Users
-          </motion.h2>
-          <Slider data={userTestimonials} />
+          <h2 className="text-3xl font-bold text-center mb-12">
+            Loved by <span className="text-purple-600">Users</span>
+          </h2>
+
+          <Carousel data={userTestimonials} />
         </div>
 
         {/* PARTNERS */}
         <div>
-          <motion.h2
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-3xl font-bold text-center text-[#6816EF] mb-14"
-          >
-            What Our Partners Say About Peppy Gold
-          </motion.h2>
-          <Slider data={partnerTestimonials} />
+          <h2 className="text-3xl font-bold text-center mb-12">
+            What Our Partner Say <span className="text-purple-600">About Peppy Gold</span>
+          </h2>
+
+          <Carousel data={partnerTestimonials} />
         </div>
 
       </div>
+
     </section>
   );
-};
-
-export default Testimonials;
+}

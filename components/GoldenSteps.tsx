@@ -1,57 +1,64 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Wallet, CreditCard, TrendingUp } from "lucide-react";
+import Image from "next/image";
 
 const steps = [
   {
     title: "Start Saving Gold with Confidence",
-    description:
-      "Create your account in minutes with a quick and secure KYC process. Begin your gold saving journey with complete peace of mind.",
-    icon: Wallet,
+    points: [
+      "At Peppy Gold, trust is the heart of everything we do.",
+      "Our secure gold saving platform ensures a smooth and rewarding journey — helping you turn every small saving into a lifetime of golden security.",
+      "Whether you're starting today or planning for tomorrow, Peppy Gold is your trusted partner for effortless gold savings.",
+      "Create your account in minutes with a quick and secure KYC process.",
+    ],
+    image: "/piggy.png",
+    alt: "Piggy bank with coins",
   },
   {
     title: "Smart Solutions to Grow Your Gold Savings",
-    description:
-      "Load your wallet easily using UPI, net banking, or debit and credit cards. Enjoy instant and hassle-free transactions.",
-    icon: CreditCard,
+    points: [
+      "Load your wallet using UPI",
+      "Use net banking with ease",
+      "Pay with debit or credit cards",
+      "Zero hassle and instant loading",
+    ],
+    image: "/graph.png",
+    alt: "Growth graph visualization",
   },
   {
     title: "Boost Your Gold Saving Success",
-    description:
-      "Track your savings, achieve milestones, and manage your gold goals effortlessly with smart analytics and automation.",
-    icon: TrendingUp,
+    points: [
+      "Smart Saving Analytics: Get clear insights into your saving patterns and optimize your growth.",
+      "Milestone Rewards: Celebrate important saving achievements with exclusive bonuses.",
+      "Automated Savings: Set up recurring deposits to build your gold portfolio effortlessly.",
+    ],
+    image: "/graph1.png",
+    alt: "Financial growth chart",
   },
 ];
 
-const GoldenSteps = () => {
+export default function GoldenSteps() {
   return (
-    <section className="relative py-28 px-6 overflow-hidden bg-gradient-to-b from-white via-[#6816EF]/5 to-white">
+    
+    <section id="help" className="py-20 bg-white scroll-mt-24">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
-      {/* Soft brand wave */}
-      <motion.div
-        animate={{ opacity: [0.2, 0.4, 0.2] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute -top-32 left-0 right-0 h-72 bg-gradient-to-r from-transparent via-[#6816EF]/25 to-transparent blur-3xl"
-      />
-
-      <div className="relative max-w-5xl mx-auto">
-
-        {/* Heading */}
-        <motion.h2
+        {/* Header */}
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-3xl font-bold text-center text-[#6816EF] mb-20"
+          className="text-center mb-20"
         >
-          Enrich Your Future in 3 Golden Steps
-        </motion.h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+            Enrich Your Future in <span className="text-purple-600">3 Golden Steps</span>
+          </h2>
+        </motion.div>
 
         {/* Steps */}
-        <div className="space-y-20">
+        <div className="space-y-24">
           {steps.map((step, index) => {
-            const Icon = step.icon;
             const isReverse = index % 2 !== 0;
 
             return (
@@ -61,37 +68,38 @@ const GoldenSteps = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
                 viewport={{ once: true }}
-                className={`flex flex-col md:flex-row ${
-                  isReverse ? "md:flex-row-reverse" : ""
-                } items-center gap-10`}
+                className={`flex flex-col ${
+                  isReverse ? "lg:flex-row-reverse" : "lg:flex-row"
+                } items-center gap-12 lg:gap-20`}
               >
-                {/* Icon */}
-                <motion.div
-                  animate={{ y: [0, -6, 0] }}
-                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                  className="w-20 h-20 rounded-2xl bg-[#6816EF]/10 flex items-center justify-center shadow-sm"
-                >
-                  <Icon className="text-[#6816EF]" size={36} />
-                </motion.div>
-
-                {/* Content */}
-                <div className="bg-white rounded-2xl border border-[#6816EF]/10 p-8 shadow-sm max-w-xl">
-                  <h3 className="text-xl font-semibold mb-3 text-gray-800">
+                {/* Text */}
+                <div className="flex-1 space-y-6">
+                  <h3 className="text-2xl font-bold text-gray-900">
                     {step.title}
                   </h3>
-                  <p className="text-gray-600 leading-relaxed text-sm">
-                    {step.description}
-                  </p>
 
-                  {/* Progress line */}
+                  <ul className="space-y-4">
+                    {step.points.map((point, i) => (
+                      <li key={i} className="flex items-start gap-3 text-gray-600">
+                        <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-purple-600 flex-shrink-0"></span>
+                        <span>{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Image */}
+                <div className="flex-1 w-full">
                   <motion.div
-                    initial={{ width: 0 }}
-                    whileInView={{ width: "100%" }}
-                    transition={{ duration: 0.8, delay: 0.2 }}
-                    viewport={{ once: true }}
-                    className="mt-6 h-1 bg-[#6816EF]/20 rounded-full overflow-hidden"
+                    whileHover={{ scale: 1.02 }}
+                    className="relative rounded-2xl overflow-hidden shadow-xl aspect-[4/3] bg-white"
                   >
-                    <div className="h-full bg-[#6816EF] rounded-full" />
+                    <Image
+                      src={step.image}
+                      alt={step.alt}
+                      fill
+                      className="object-cover"
+                    />
                   </motion.div>
                 </div>
               </motion.div>
@@ -101,7 +109,6 @@ const GoldenSteps = () => {
 
       </div>
     </section>
+    
   );
-};
-
-export default GoldenSteps;
+}

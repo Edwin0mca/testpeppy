@@ -1,91 +1,74 @@
 "use client";
 
-import { ShieldCheck, Wallet, IndianRupee, Headset } from "lucide-react";
 import { motion } from "framer-motion";
+import { ShieldCheck, Wallet, IndianRupee, Headset } from "lucide-react";
 
 const features = [
   {
     title: "Secure Payments & Trusted Jewellers",
     description:
-      "Save and redeem your gold safely through our network of verified and trusted jewellers.",
+      "Save and redeem your gold safely through your gold safety through verified jewelers.",
     icon: ShieldCheck,
   },
   {
     title: "Flexible Saving Options",
-    description:
-      "Choose from one-time, monthly, anytime, or product-based gold saving schemes.",
+    description: "Choose One-Time, Monthly, Anytime, or Product-based schemes.",
     icon: Wallet,
   },
   {
     title: "Zero Platform Fees",
-    description:
-      "Invest 100% of your money with zero hidden charges or platform fees.",
+    description: "No hidden charges, invest 100% of your money.",
     icon: IndianRupee,
   },
   {
     title: "24/7 Support & Guidance",
-    description:
-      "Our friendly support team is available round the clock to assist you.",
+    description: "Friendly support team ready to assist whenever you need.",
     icon: Headset,
   },
 ];
 
-const WhyPeppyGold = () => {
+export default function WhyPeppyGold() {
   return (
-    <section id="why-peppy-gold" className="scroll-mt-24">
+    <section id="why-peppy-gold"className="py-20 bg-white overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-    <section className="relative py-28 px-6 overflow-hidden bg-gradient-to-br from-[#6816EF]/5 via-white to-[#6816EF]/10">
-
-      {/* Soft Brand Wave */}
-      <motion.div
-        animate={{ opacity: [0.25, 0.45, 0.25] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute -top-32 left-0 right-0 h-80 bg-gradient-to-r from-transparent via-[#6816EF]/30 to-transparent blur-3xl"
-      />
-
-      <div className="relative max-w-6xl mx-auto">
-
-        {/* Heading */}
-        <motion.h2
+        {/* Section Header */}
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-3xl font-bold text-center text-[#6816EF] mb-16"
+          className="text-center mb-16"
         >
-          Why Peppy Gold?
-        </motion.h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+            Why Peppy Gold?
+          </h2>
+          <div className="w-16 h-1 bg-purple-600 mx-auto mt-4 rounded-full"></div>
+        </motion.div>
 
-        {/* Feature Cards */}
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-          {features.map((item, index) => {
-            const Icon = item.icon;
+        {/* Features */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {features.map((feature, index) => {
+            const Icon = feature.icon;
 
             return (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: index * 0.08 }}
+                transition={{ delay: index * 0.1 }}
                 viewport={{ once: true }}
-                whileHover={{ y: -6 }}
-                className="bg-white rounded-2xl border border-[#6816EF]/10 p-6 shadow-sm hover:shadow-lg transition"
+                className="flex flex-col items-center text-center p-6 rounded-xl hover:bg-gray-50 transition"
               >
-                {/* Icon */}
-                <motion.div
-                  animate={{ y: [0, -4, 0] }}
-                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                  className="w-12 h-12 flex items-center justify-center rounded-full bg-[#6816EF]/10 mb-4"
-                >
-                  <Icon className="text-[#6816EF]" size={24} />
-                </motion.div>
+                <div className="w-14 h-14 rounded-full bg-purple-50 flex items-center justify-center mb-4 text-purple-600">
+                  <Icon size={28} strokeWidth={1.5} />
+                </div>
 
-                <h3 className="text-lg font-semibold mb-2 text-gray-800">
-                  {item.title}
+                <h3 className="text-lg font-bold text-gray-900 mb-3">
+                  {feature.title}
                 </h3>
 
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  {item.description}
+                <p className="text-gray-600 text-sm">
+                  {feature.description}
                 </p>
               </motion.div>
             );
@@ -94,8 +77,5 @@ const WhyPeppyGold = () => {
 
       </div>
     </section>
-    </section>
   );
-};
-
-export default WhyPeppyGold;
+}

@@ -1,157 +1,77 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Image from "next/image";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
-type Particle = {
-  left: string;
-  size: string;
-  duration: string;
-  delay: string;
-  isGold: boolean;
-};
-
-const PARTICLE_COUNT = 70;
-
-const Hero = () => {
-  const [particles, setParticles] = useState<Particle[]>([]);
-
-  // Parallax
-  const { scrollY } = useScroll();
-  const logoY = useTransform(scrollY, [0, 400], [0, -40]);
-  const bgY = useTransform(scrollY, [0, 400], [0, 60]);
+export default function Hero() {
+  const [coins, setCoins] = useState<number[]>([]);
 
   useEffect(() => {
-    const generatedParticles = Array.from({ length: PARTICLE_COUNT }).map(
-      () => ({
-        left: `${Math.random() * 100}%`,
-        size: `${Math.random() * 8 + 4}px`,
-        duration: `${Math.random() * 10 + 12}s`,
-        delay: `${Math.random() * 6}s`,
-        isGold: Math.random() > 0.35,
-      })
-    );
-
-    setParticles(generatedParticles);
+    const positions = Array.from({ length: 8 }, () => Math.random() * 100);
+    setCoins(positions);
   }, []);
 
   return (
     <section
-      id="home"
-      className="relative overflow-hidden text-white py-32 px-8 scroll-mt-24"
+      className="relative h-screen w-full flex items-center justify-center text-center overflow-hidden"
+      style={{
+        clipPath: "polygon(0 0, 100% 0, 100% 85%, 0 100%)",
+      }}
     >
-      {/* PARALLAX BACKGROUND */}
-      <motion.div
-        style={{ y: bgY }}
-        className="absolute inset-0 bg-gradient-to-r from-black to-gray-900"
-      />
-
-      {/* GOLD & SILVER FALL – HERO ONLY */}
-      <div className="fixed inset-0 top-0 pointer-events-none z-0">
-        {particles.map((p, i) => (
-          <span
-            key={i}
-            className={`absolute top-[-15%] rounded-full blur-sm opacity-70 animate-frost-fall ${
-              p.isGold ? "bg-[#6816EF]" : "bg-gray-200"
-            }`}
-            style={{
-              left: p.left,
-              width: p.size,
-              height: p.size,
-              animationDuration: p.duration,
-              animationDelay: p.delay,
-            }}
-          />
-        ))}
+      {/* Background */}
+      <div className="absolute inset-0">
+        <Image
+          src="/hero.png"
+          alt="Gold Vault"
+          fill
+          priority
+          className="object-cover"
+        />
       </div>
 
-      {/* CONTENT GRID */}
-      <div className="relative z-10 max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-        
-        {/* LEFT CONTENT – STAGGER */}
-        <motion.div
-          variants={{
-            hidden: {},
-            visible: {
-              transition: { staggerChildren: 0.18 },
-            },
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black/60" />
+
+      {/* Gold coins */}
+      {coins.map((left, i) => (
+        <motion.img
+          key={i}
+          src="/coins/goldcoin.png"
+          className="absolute w-7 opacity-80"
+          style={{ left: `${left}%` }}
+          initial={{ y: -200, rotate: 0, opacity: 0 }}
+          animate={{ y: "120vh", rotate: 360, opacity: [0, 1, 1, 0] }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            delay: i * 0.5,
           }}
-          initial="hidden"
-          animate="visible"
-          className="text-center md:text-left"
+        />
+      ))}
+
+      {/* Content */}
+      <div className="relative z-10 px-6">
+        <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+          Secure Your Future with the <br /> Best Gold Saving Platform
+        </h1>
+
+        <p className="max-w-2xl mx-auto text-gray-200 text-lg">
+          Access Peppy Gold anytime, anywhere through our web app to explore
+          gold savings, live rates, exclusive schemes, offers, and exciting
+          gifts all in one place.
+        </p>
+
+        {/* ✅ Correct Button */}
+        <a
+          href="https://play.google.com/store/apps/details?id=com.peppygold.user&pcampaignid=web_share"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-8 inline-block bg-[#6816EF] px-8 py-3 rounded-xl text-white font-semibold hover:bg-[#5a12d4] transition"
         >
-          <motion.h1
-            variants={{
-              hidden: { opacity: 0, y: 26 },
-              visible: {
-                opacity: 1,
-                y: 0,
-                transition: { duration: 0.6, ease: "easeOut" },
-              },
-            }}
-            className="text-4xl md:text-5xl font-bold text-[#6816EF] mb-5"
-          >
-            India’s Trusted Gold Aggregator
-          </motion.h1>
-
-          <motion.p
-            variants={{
-              hidden: { opacity: 0, y: 22 },
-              visible: {
-                opacity: 1,
-                y: 0,
-                transition: { duration: 0.6, ease: "easeOut" },
-              },
-            }}
-            className="max-w-2xl mx-auto md:mx-0 text-lg text-gray-300"
-          >
-            Buy, sell, and manage gold securely with PeppyGold — transparent,
-            reliable, and built for the future.
-          </motion.p>
-
-          <motion.button
-            variants={{
-              hidden: { opacity: 0, y: 18 },
-              visible: {
-                opacity: 1,
-                y: 0,
-                transition: { duration: 0.5, ease: "easeOut" },
-              },
-            }}
-            whileHover={{
-              scale: 1.06,
-              boxShadow: "0 0 25px rgba(104,22,239,0.45)",
-            }}
-            transition={{ duration: 0.3 }}
-            className="mt-12 px-8 py-3 bg-[#6816EF] text-white font-semibold rounded-xl"
-          >
-            Get Started
-          </motion.button>
-        </motion.div>
-
-        {/* RIGHT LOGO */}
-        <div className="flex justify-center md:justify-end">
-          <motion.div
-            style={{ y: logoY }}
-            animate={{ scale: [1, 1.04, 1] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            className="relative"
-          >
-            <div className="absolute inset-0 rounded-full bg-[#6816EF]/20 blur-3xl" />
-            <Image
-              src="/Logo/Logo.png"
-              alt="Peppy Gold Logo"
-              width={260}
-              height={260}
-              priority
-              className="relative z-10 drop-shadow-2xl"
-            />
-          </motion.div>
-        </div>
+          Get Started
+        </a>
       </div>
     </section>
   );
-};
-
-export default Hero;
+}

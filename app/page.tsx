@@ -1,6 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import ServiceCard from "@/components/ServiceCard";
+
 import WhyPeppyGold from "@/components/WhyPeppyGold";
 import GoldenSteps from "@/components/GoldenSteps";
 
@@ -37,21 +37,7 @@ export default function Home() {
       <Hero />
       
 
-      {/* Services Section */}
-      <section className="py-16 px-8 grid md:grid-cols-3 gap-8 bg-gray-100">
-        <ServiceCard
-          title="Gold Aggregation"
-          description="Consolidating gold from trusted sources with full transparency."
-        />
-        <ServiceCard
-          title="Digital Gold"
-          description="Invest in gold digitally with real-time value tracking."
-        />
-        <ServiceCard
-          title="Secure Storage"
-          description="Your gold is stored safely with insured vault partners."
-        />
-      </section>
+
 
       {/* Why Peppy Gold Section */}
       <WhyPeppyGold />

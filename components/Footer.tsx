@@ -100,9 +100,13 @@ const Footer = () => {
             <button className="border border-[#6816EF] text-[#6816EF] px-4 py-1.5 rounded-lg text-xs hover:bg-[#6816EF] hover:text-white transition">
               WhatsApp Us
             </button>
-            <button className="border border-gray-600 px-4 py-1.5 rounded-lg text-xs hover:border-[#6816EF] transition">
-              Contact Form
-            </button>
+           
+
+<Link href="/#Contact">
+  <button className="border border-gray-600 px-4 py-1.5 rounded-lg text-xs hover:border-[#6816EF] transition">
+    Contact Form
+  </button>
+</Link>
           </div>
         </div>
       </motion.div>
