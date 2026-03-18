@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 const boardOfDirectors = [
   { name: "Mr. Arun Pradeep", role: "Founder & CEO, Global" },
@@ -16,14 +16,14 @@ const advisoryBoard = [
   { name: "Mrs. Ramadevi S", role: "Founder & CEO – Elangi Thanga Maaligai" },
 ];
 
-const cardVariants = {
+const cardVariants: Variants = {
   hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
       duration: 0.6,
-      ease: [0.16, 1, 0.3, 1],
+      ease: "easeOut", // ✅ FIXED (no TypeScript error)
     },
   },
 };
@@ -31,7 +31,6 @@ const cardVariants = {
 export default function Leadership() {
   return (
     <section className="relative overflow-hidden py-32 px-6 bg-gradient-to-r from-[#6816EF] to-[#4a0fb3] text-white">
-
       <div className="relative max-w-6xl mx-auto space-y-28">
 
         {/* BOARD */}
@@ -56,9 +55,7 @@ export default function Leadership() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.08 }}
                 whileHover={{ y: -8 }}
-                className="bg-white/10 backdrop-blur
-                rounded-2xl p-7 border border-white/20
-                hover:bg-white/20 transition"
+                className="bg-white/10 backdrop-blur rounded-2xl p-7 border border-white/20 hover:bg-white/20 transition"
               >
                 <h3 className="text-lg font-semibold mb-1">
                   {member.name}
@@ -94,9 +91,7 @@ export default function Leadership() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.08 }}
                 whileHover={{ y: -8 }}
-                className="bg-white/10 backdrop-blur
-                rounded-2xl p-7 border border-white/20
-                hover:bg-white/20 transition"
+                className="bg-white/10 backdrop-blur rounded-2xl p-7 border border-white/20 hover:bg-white/20 transition"
               >
                 <h3 className="text-lg font-semibold mb-1">
                   {member.name}
