@@ -37,7 +37,7 @@ export default function Hero() {
       {coins.map((left, i) => (
         <motion.img
           key={i}
-          src="/coins/goldcoin.png"
+          src="/Coins/goldcoin.png"
           className="absolute w-7 opacity-80"
           style={{ left: `${left}%` }}
           initial={{ y: -200, rotate: 0, opacity: 0 }}
