@@ -17,7 +17,7 @@ export default function GoldRain() {
       {coins.map((coin, i) => (
         <motion.img
           key={i}
-          src="/coins/goldcoin.png"
+          src="/Coins/goldcoin.png"
           className="absolute opacity-70"
           style={{
             left: coin.left,
