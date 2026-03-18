@@ -23,7 +23,7 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3">
           <Image
-            src="/Logo/Logo.png"
+            src="/Logo/logo.png"
             alt="Peppy Gold"
             width={40}
             height={40}
