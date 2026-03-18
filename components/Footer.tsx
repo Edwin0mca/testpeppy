@@ -4,10 +4,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
+const PLAYSTORE_LINK =
+  "https://play.google.com/store/apps/details?id=com.peppygold.user";
+
+const APPSTORE_LINK =
+  "https://apps.apple.com/us/app/peppy-gold-offers-schemes/id6755230672";
+
 const Footer = () => {
   return (
     <footer className="relative bg-black text-gray-300 pt-24 px-6 overflow-hidden">
-
       {/* Soft brand glow */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-[#6816EF]/20 blur-3xl" />
@@ -31,7 +36,8 @@ const Footer = () => {
           </p>
 
           <Link
-            href="#get-started"
+            href={PLAYSTORE_LINK}
+            target="_blank"
             className="inline-block bg-[#6816EF] text-white px-6 py-2 rounded-xl text-sm font-semibold hover:scale-105 transition"
           >
             Start Today
@@ -45,21 +51,27 @@ const Footer = () => {
           </h3>
 
           <div className="flex gap-6">
-            {[
-              { src: "/qr/android.png", label: "Android" },
-              { src: "/qr/ios.png", label: "iOS" },
-            ].map((app) => (
-              <div key={app.label} className="text-center">
-                <Image
-                  src={app.src}
-                  alt={`${app.label} App QR`}
-                  width={90}
-                  height={90}
-                  className="bg-white p-2 rounded-lg shadow-md"
-                />
-                <p className="text-xs mt-2">{app.label}</p>
-              </div>
-            ))}
+            <Link href={PLAYSTORE_LINK} target="_blank" className="text-center">
+              <Image
+                src="/qr/android.png"
+                alt="Android App QR"
+                width={90}
+                height={90}
+                className="bg-white p-2 rounded-lg shadow-md hover:scale-105 transition"
+              />
+              <p className="text-xs mt-2">Android</p>
+            </Link>
+
+            <Link href={APPSTORE_LINK} target="_blank" className="text-center">
+              <Image
+                src="/qr/ios.png"
+                alt="iOS App QR"
+                width={90}
+                height={90}
+                className="bg-white p-2 rounded-lg shadow-md hover:scale-105 transition"
+              />
+              <p className="text-xs mt-2">iOS</p>
+            </Link>
           </div>
         </div>
 
@@ -77,10 +89,7 @@ const Footer = () => {
               "Terms of Service",
             ].map((item) => (
               <li key={item}>
-                <Link
-                  href="#"
-                  className="hover:text-[#6816EF] transition"
-                >
+                <Link href="#" className="hover:text-[#6816EF] transition">
                   {item}
                 </Link>
               </li>
@@ -97,16 +106,19 @@ const Footer = () => {
           <p className="text-sm mb-4">✉️ support@peppygold.com</p>
 
           <div className="flex gap-3">
-            <button className="border border-[#6816EF] text-[#6816EF] px-4 py-1.5 rounded-lg text-xs hover:bg-[#6816EF] hover:text-white transition">
+            <a
+              href="https://wa.me/919600898971"
+              target="_blank"
+              className="border border-[#6816EF] text-[#6816EF] px-4 py-1.5 rounded-lg text-xs hover:bg-[#6816EF] hover:text-white transition"
+            >
               WhatsApp Us
-            </button>
-           
+            </a>
 
-<Link href="/#Contact">
-  <button className="border border-gray-600 px-4 py-1.5 rounded-lg text-xs hover:border-[#6816EF] transition">
-    Contact Form
-  </button>
-</Link>
+            <Link href="/#Contact">
+              <button className="border border-gray-600 px-4 py-1.5 rounded-lg text-xs hover:border-[#6816EF] transition">
+                Contact Form
+              </button>
+            </Link>
           </div>
         </div>
       </motion.div>
