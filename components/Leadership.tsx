@@ -30,7 +30,7 @@ const cardVariants: Variants = {
 
 export default function Leadership() {
   return (
-    <section className="relative overflow-hidden py-32 px-6 bg-gradient-to-r from-[#6816EF] to-[#4a0fb3] text-white">
+    <section className="py-24 px-6 bg-[#3B1374] text-white">
       <div className="relative max-w-6xl mx-auto space-y-28">
 
         {/* BOARD */}

@@ -18,7 +18,7 @@ const benefits = [
 
 export default function UserBenefits() {
   return (
-    <section className="bg-[#4C148C] py-20 px-6 text-white">
+    <section className="py-24 px-6 bg-[#3B1374] text-white">
 
       <div className="max-w-6xl mx-auto">
 

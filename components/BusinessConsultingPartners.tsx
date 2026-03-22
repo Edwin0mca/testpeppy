@@ -68,9 +68,9 @@ export default function Partners() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-3xl font-bold text-center mb-14"
+          className="text-3xl font-bold text-center mb-12 text-black"
         >
-          Business <span className="text-[#6816EF]">Consulting Partners</span>
+          Business <span className="bg-gradient-to-r from-[#7C3AED] to-[#A855F7] bg-clip-text text-transparent">Consulting Partners</span>
         </motion.h2>
 
         <div className="grid md:grid-cols-2 gap-12 mb-24">
@@ -108,9 +108,9 @@ export default function Partners() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="text-3xl font-bold text-center mb-10"
+          className="text-3xl font-bold text-center mb-12 text-black"
         >
-          Communication <span className="text-[#6816EF]">Partners</span>
+          Communication <span className="bg-gradient-to-r from-[#7C3AED] to-[#A855F7] bg-clip-text text-transparent">Partners</span>
         </motion.h2>
 
         <div className="flex justify-center gap-16 mb-24 flex-wrap">
@@ -127,9 +127,9 @@ export default function Partners() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="text-3xl font-bold text-center mb-10"
+          className="text-3xl font-bold text-center mb-12 text-black"
         >
-          Marketing <span className="text-[#6816EF]">Partners</span>
+        
         </motion.h2>
 
         <div className="flex justify-center gap-16 mb-24 flex-wrap">
@@ -142,8 +142,8 @@ export default function Partners() {
 
         {/* Technology Partners */}
 
-        <h2 className="text-3xl font-bold text-center mb-10">
-          Technology <span className="text-[#6816EF]">Partners</span>
+        <h2 className="text-3xl font-bold text-center mb-12 text-black">
+          Technology <span className="bg-gradient-to-r from-[#7C3AED] to-[#A855F7] bg-clip-text text-transparent">Partners</span>
         </h2>
 
         <div className="flex justify-center gap-16 mb-24 flex-wrap">
@@ -156,8 +156,8 @@ export default function Partners() {
 
         {/* Payment Partner */}
 
-        <h2 className="text-3xl font-bold text-center mb-10">
-          Payment <span className="text-[#6816EF]">Partner</span>
+        <h2 className="text-3xl font-bold text-center mb-12 text-black">
+          Payment <span className="bg-gradient-to-r from-[#7C3AED] to-[#A855F7] bg-clip-text text-transparent">Partner</span>
         </h2>
 
         <div className="flex justify-center gap-20 mb-24 flex-wrap">
@@ -170,8 +170,8 @@ export default function Partners() {
 
         {/* Incubation Collaboration */}
 
-        <h2 className="text-3xl font-bold text-center mb-10">
-          Incubation <span className="text-[#6816EF]">Collaboration</span>
+        <h2 className="text-3xl font-bold text-center mb-12 text-black">
+          Incubation <span className="bg-gradient-to-r from-[#7C3AED] to-[#A855F7] bg-clip-text text-transparent">Collaboration</span>
         </h2>
 
         <div className="flex justify-center gap-20 flex-wrap">

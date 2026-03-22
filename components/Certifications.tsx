@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 export default function Certifications() {
   return (
-    <section className="py-24 px-6 bg-gradient-to-r from-purple-700 to-purple-500 text-white">
+    <section className="py-24 px-6 bg-gradient-to-r from-[#5B21B6] to-[#9333EA] text-white">
 
       <div className="max-w-6xl mx-auto">
 

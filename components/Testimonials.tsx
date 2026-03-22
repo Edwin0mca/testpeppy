@@ -128,17 +128,21 @@ export default function Testimonials() {
 
         {/* USERS */}
         <div>
-          <h2 className="text-3xl font-bold text-center mb-12">
-            Loved by <span className="text-purple-600">Users</span>
-          </h2>
+<h2 className="text-3xl font-bold text-center mb-12 text-black">
+  Loved by{" "}
+  <span className="bg-gradient-to-r from-[#7C3AED] to-[#A855F7] bg-clip-text text-transparent">
+    Users
+  </span>
+</h2>
 
           <Carousel data={userTestimonials} />
         </div>
 
         {/* PARTNERS */}
         <div>
-          <h2 className="text-3xl font-bold text-center mb-12">
-            What Our Partner Say <span className="text-purple-600">About Peppy Gold</span>
+<h2 className="text-3xl font-bold text-center mb-12 text-black">
+      
+            What Our Partner Say <span className="bg-gradient-to-r from-[#7C3AED] to-[#A855F7] bg-clip-text text-transparent">About Peppy Gold</span>
           </h2>
 
           <Carousel data={partnerTestimonials} />

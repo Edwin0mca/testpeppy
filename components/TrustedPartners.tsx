@@ -29,9 +29,9 @@ export default function TrustedPartners() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-3xl font-bold text-gray-900 mb-3"
+          className="text-3xl font-bold text-center mb-12 text-black"
         >
-          Our Trusted <span className="text-[#6816EF]">Partners</span>
+          Our Trusted <span className="bg-gradient-to-r from-[#7C3AED] to-[#A855F7] bg-clip-text text-transparent">Partners</span>
         </motion.h2>
 
         <p className="text-gray-500 max-w-xl mx-auto mb-16">
